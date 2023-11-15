@@ -57,6 +57,7 @@ public class FilteringApples {
     return result;
   }
 
+  //메서드에 파라미터를 추가
   public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color) {
     List<Apple> result = new ArrayList<>();
     for (Apple apple : inventory) {
@@ -116,6 +117,7 @@ public class FilteringApples {
     }
 
   }
+
 
   interface ApplePredicate {
 
