@@ -5,6 +5,7 @@ import static modernjavainaction.chap04.Dish.menu;
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -40,6 +41,12 @@ public class NumericStreams {
     // 숫자 범위
     IntStream evenNumbers = IntStream.rangeClosed(1, 100)
         .filter(n -> n % 2 == 0);
+
+    List<Integer> evenList = IntStream.rangeClosed(1, 100)
+            .filter(n -> n % 2 == 0)
+            .boxed()
+            .collect(Collectors.toList());
+    System.out.println("evenList = " + evenList);
     System.out.println(evenNumbers.count());
 
     Stream<int[]> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed()

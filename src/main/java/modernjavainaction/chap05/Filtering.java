@@ -4,7 +4,9 @@ import static java.util.stream.Collectors.toList;
 import static modernjavainaction.chap04.Dish.menu;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import modernjavainaction.chap04.Dish;
 
@@ -18,13 +20,33 @@ public class Filtering {
         .collect(toList());
     vegetarianMenu.forEach(System.out::println);
 
+    System.out.println("=====================================");
+
     // 고유 요소로 거름
     System.out.println("Filtering unique elements:");
-    List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
+    List<Integer> numbers = Arrays.asList(6, 2, 1, 3, 3, 2, 4);
     numbers.stream()
         .filter(i -> i % 2 == 0)
         .distinct()
         .forEach(System.out::println);
+
+    System.out.println("=====================================");
+
+    List<Integer> collect = numbers.stream()
+            .filter(i -> i % 2 == 0)
+            .distinct().sorted().collect(toList());
+
+    System.out.println("collect = " + collect);
+
+
+    collect = numbers.stream()
+            .filter(i -> i % 2 == 0)
+            .distinct().sorted(Comparator.reverseOrder())
+            .collect(toList());
+
+    System.out.println("reverseCollect = " + collect);
+
+    System.out.println("=====================================");
 
     // 스트림 슬라이스
     // 칼로리 값을 기준으로 리스트를 오름차순 정렬!
@@ -40,17 +62,23 @@ public class Filtering {
         .collect(toList());
     filteredMenu.forEach(System.out::println);
 
+    System.out.println("=====================================");
+
     System.out.println("Sorted menu sliced with takeWhile():");
     List<Dish> slicedMenu1 = specialMenu.stream()
         .takeWhile(dish -> dish.getCalories() < 320)
         .collect(toList());
     slicedMenu1.forEach(System.out::println);
 
+    System.out.println("=====================================");
+
     System.out.println("Sorted menu sliced with dropWhile():");
     List<Dish> slicedMenu2 = specialMenu.stream()
         .dropWhile(dish -> dish.getCalories() < 320)
         .collect(toList());
     slicedMenu2.forEach(System.out::println);
+
+    System.out.println("=====================================");
 
     // 스트림 연결
     List<Dish> dishesLimit3 = menu.stream()
@@ -60,6 +88,8 @@ public class Filtering {
     System.out.println("Truncating a stream:");
     dishesLimit3.forEach(System.out::println);
 
+    System.out.println("=====================================");
+
     // 요소 생략
     List<Dish> dishesSkip2 = menu.stream()
         .filter(d -> d.getCalories() > 300)
@@ -67,6 +97,14 @@ public class Filtering {
         .collect(toList());
     System.out.println("Skipping elements:");
     dishesSkip2.forEach(System.out::println);
+
+    System.out.println("=====================================");
+
+    List<Dish> firstMeat = menu.stream()
+            .filter(d -> d.getType() == Dish.Type.MEAT)
+            .limit(2)
+            .collect(Collectors.toList());
+    System.out.println("firstMeat = " + firstMeat);
   }
 
 }
