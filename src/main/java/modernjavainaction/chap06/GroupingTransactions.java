@@ -27,15 +27,19 @@ public class GroupingTransactions {
   );
 
   public static void main(String... args) {
+    System.out.println("========== groupImperatively ==========");
     groupImperatively();
+    System.out.println("========== groupFunctionally ==========");
     groupFunctionally();
   }
 
   private static void groupImperatively() {
     Map<Currency, List<Transaction>> transactionsByCurrencies = new HashMap<>();
+
     for (Transaction transaction : transactions) {
       Currency currency = transaction.getCurrency();
       List<Transaction> transactionsForCurrency = transactionsByCurrencies.get(currency);
+
       if (transactionsForCurrency == null) {
         transactionsForCurrency = new ArrayList<>();
         transactionsByCurrencies.put(currency, transactionsForCurrency);

@@ -13,10 +13,7 @@ import static java.util.stream.Collectors.toSet;
 import static modernjavainaction.chap06.Dish.dishTags;
 import static modernjavainaction.chap06.Dish.menu;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class Grouping {
 
@@ -37,7 +34,24 @@ public class Grouping {
   }
 
   private static Map<Dish.Type, List<Dish>> groupDishesByType() {
-    return menu.stream().collect(groupingBy(Dish::getType));
+      Map<Dish.Type, List<Dish>> groupByType = menu.stream().collect(groupingBy(Dish::getType));
+      System.out.println("===================");
+      Set<Dish.Type> types = groupByType.keySet();
+
+      for (Dish.Type type : types) {
+          List<Dish> dishes = groupByType.get(type);
+          for (Dish dish : dishes) {
+              System.out.println(dish);
+          }
+      }
+
+      Collection<List<Dish>> values = groupByType.values();
+      for (List<Dish> value : values) {
+          System.out.println("value :: " + value);
+      }
+
+      System.out.println("===================");
+      return menu.stream().collect(groupingBy(Dish::getType));
   }
 
   private static Map<Dish.Type, List<String>> groupDishNamesByType() {
