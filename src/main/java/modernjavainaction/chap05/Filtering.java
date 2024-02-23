@@ -20,6 +20,17 @@ public class Filtering {
         .collect(toList());
     vegetarianMenu.forEach(System.out::println);
 
+    vegetarianMenu.forEach(dish -> {
+      System.out.println("dish = " + dish);
+    });
+
+    List<Integer> integerList = Arrays.asList(10,2,1,3,8,7,4,4,2,7);
+
+    List<Integer> integerCollect = integerList.stream()
+            .filter(tmp -> tmp % 2 == 0).distinct().collect(toList());
+
+    System.out.println("integerCollect = " + integerCollect);
+
     System.out.println("=====================================");
 
     // 고유 요소로 거름
@@ -30,6 +41,7 @@ public class Filtering {
         .distinct()
         .forEach(System.out::println);
 
+
     System.out.println("=====================================");
 
     List<Integer> collect = numbers.stream()
@@ -37,7 +49,6 @@ public class Filtering {
             .distinct().sorted().collect(toList());
 
     System.out.println("collect = " + collect);
-
 
     collect = numbers.stream()
             .filter(i -> i % 2 == 0)
@@ -51,10 +62,10 @@ public class Filtering {
     // 스트림 슬라이스
     // 칼로리 값을 기준으로 리스트를 오름차순 정렬!
     List<Dish> specialMenu = Arrays.asList(
-        new Dish("season fruit", true, 120, Dish.Type.OTHER),
-        new Dish("prawns", false, 300, Dish.Type.FISH),
         new Dish("rice", true, 350, Dish.Type.OTHER),
+        new Dish("prawns", false, 300, Dish.Type.FISH),
         new Dish("chicken", false, 400, Dish.Type.MEAT),
+        new Dish("season fruit", true, 120, Dish.Type.OTHER),
         new Dish("french fries", true, 530, Dish.Type.OTHER));
     System.out.println("Filtered sorted menu:");
     List<Dish> filteredMenu = specialMenu.stream()

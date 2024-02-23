@@ -9,7 +9,7 @@ import java.util.List;
 import modernjavainaction.chap04.Dish;
 
 public class Mapping{
-
+  // 스트림 API의 map과 flatMap 메서드는 특정 데이터를 선택하는 기능을 제공
   public static void main(String... args) {
     // map -> 함수를 인수로 받는 map 메서드
     List<String> dishNames = menu.stream()

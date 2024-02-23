@@ -58,7 +58,8 @@ public class StreamBasic {
             .filter(d -> d.getCalories() < 400)
             .sorted(Comparator.comparing(d -> d.getCalories()))
             .map(d -> d.getName())
-            .collect(Collectors.toList());
+            .collect(Collectors.toList())
+            ;
   }
 
   public static List<String> getLowCaloricDishesNamesInJava8Version3(List<Dish> dishes){

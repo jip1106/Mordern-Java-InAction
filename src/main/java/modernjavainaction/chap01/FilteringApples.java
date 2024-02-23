@@ -26,6 +26,7 @@ public class FilteringApples {
 
     System.out.println("inventory = " + inventory);
 
+
     // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
     // 코드 (isGreenApple) 를 인수로 넘겨줄 수 있음
     List<Apple> greenApples = filterApples(inventory, FilteringApples::isGreenApple);
