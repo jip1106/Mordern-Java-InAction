@@ -13,13 +13,13 @@ public class Reducing {
   public static void main(String... args) {
     List<Integer> numbers = Arrays.asList(3, 4, 5, 1, 2);
     int sum = numbers.stream().reduce(0, (a, b) -> a + b);
-    System.out.println(sum);
+    System.out.println("sum :: " + sum);
 
     int sum2 = numbers.stream().reduce(0, Integer::sum);
-    System.out.println(sum2);
+    System.out.println("sum2 :: " + sum2);
 
     int max = numbers.stream().reduce(0, (a, b) -> Integer.max(a, b));
-    System.out.println(max);
+    System.out.println("max :: " + max);
 
     Optional<Integer> min = numbers.stream().reduce(Integer::min);
     min.ifPresent(System.out::println);

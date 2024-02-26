@@ -14,6 +14,7 @@ import static modernjavainaction.chap06.Dish.dishTags;
 import static modernjavainaction.chap06.Dish.menu;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Grouping {
 
@@ -35,13 +36,15 @@ public class Grouping {
 
   private static Map<Dish.Type, List<Dish>> groupDishesByType() {
       Map<Dish.Type, List<Dish>> groupByType = menu.stream().collect(groupingBy(Dish::getType));
+
+
       System.out.println("===================");
       Set<Dish.Type> types = groupByType.keySet();
 
       for (Dish.Type type : types) {
           List<Dish> dishes = groupByType.get(type);
           for (Dish dish : dishes) {
-              System.out.println(dish);
+              System.out.println("dish:: " + dish);
           }
       }
 
