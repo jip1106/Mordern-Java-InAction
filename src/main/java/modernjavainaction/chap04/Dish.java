@@ -18,9 +18,16 @@ public class Dish {
   private final Type type;
 
   public enum Type {
-    MEAT,
-    FISH,
-    OTHER
+    MEAT("고기"),
+    FISH("생선"),
+    OTHER("기타");
+
+    private String name;
+
+    Type(String name){
+      this.name = name;
+    }
+
   }
 
   @Override

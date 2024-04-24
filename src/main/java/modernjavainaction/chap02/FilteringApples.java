@@ -15,13 +15,24 @@ public class FilteringApples {
         new Apple(155, Color.GREEN),
         new Apple(120, Color.RED));
 
+    //java8 이전 st
+    System.out.println("java8 이전 st ");
+    filterGreenApples(inventory);
+
+
+    System.out.println("java8 이전 end ");
+    //java8 이전 end
+
+
+
+
     // [Apple{color=GREEN, weight=80}, Apple{color=GREEN, weight=155}]
     List<Apple> greenApples = filterApplesByColor(inventory, Color.GREEN);
-    System.out.println(greenApples);
+    System.out.println("greenApples :: " + greenApples);
 
     // [Apple{color=RED, weight=120}]
     List<Apple> redApples = filterApplesByColor(inventory, Color.RED);
-    System.out.println(redApples);
+    System.out.println("redApples :: " + redApples);
 
     // [Apple{color=GREEN, weight=80}, Apple{color=GREEN, weight=155}]
     List<Apple> greenApples2 = filter(inventory, new AppleColorPredicate());
@@ -49,6 +60,9 @@ public class FilteringApples {
 
   public static List<Apple> filterGreenApples(List<Apple> inventory) {
     List<Apple> result = new ArrayList<>();
+
+    System.out.println(Arrays.toString(Color.values()));
+
     for (Apple apple : inventory) {
       if (apple.getColor() == Color.GREEN) {
         result.add(apple);
@@ -93,8 +107,18 @@ public class FilteringApples {
   }
 
   enum Color {
-    RED,
-    GREEN
+    RED("빨간색"),
+    GREEN("초록색");
+
+    private String name;
+
+    Color(String name){
+      this.name = name;
+    }
+
+    public String getName(){
+      return name;
+    }
   }
 
   @Getter

@@ -13,7 +13,6 @@ public class FilteringApples {
 /**
  * 메서드 (코드) 를 인수로 전달할 수 있다.
  * */
-
   public static void main(String... args) {
     List<Apple> inventory = Arrays.asList(
         new Apple(80, "green"),
